@@ -1,0 +1,54 @@
+name:           Interpreter
+version:        0.1
+cabal-version:  >=1.2
+build-type:     Simple
+author:         Mihnea
+
+executable Interpreter
+  hs-source-dirs:  src
+  main-is:         Main.hs
+  build-depends:   
+                   base >= 4,
+                   containers,
+                   mtl >= 2.2.2
+  ghc-options:     -Wall
+  other-modules:   
+                   Syntax.Parser,
+                   Syntax.Expression,
+                   Syntax.Grammar,
+                   Evaluation.Substitution,
+                   Evaluation.Normal,
+                   Evaluation.Applicative,
+                   Evaluation.Big,
+                   Typing.Type,
+                   Typing.Unification,
+                   Typing.Inference
+
+test-suite InterpreterTest
+  type:            exitcode-stdio-1.0
+  main-is:         InterpreterTest.hs
+  ghc-options:     -Wall -rtsopts
+  build-depends:   
+                   base >= 4, 
+                   HTF > 0.9,
+                   containers,
+                   mtl >= 2.2.2
+  other-modules:   
+                   Evaluation.Substitution,
+                   Evaluation.SubstitutionTest,
+                   Evaluation.Normal,
+                   Evaluation.NormalTest,
+                   Util,
+                   Evaluation.Applicative,
+                   Evaluation.ApplicativeTest,
+                   Evaluation.Big,
+                   Evaluation.BigTest,
+                   Typing.Type,
+                   Typing.TypeTest,
+                   Typing.Unification,
+                   Typing.UnificationTest,
+                   Typing.Inference,
+                   Typing.InferenceTest
+  hs-source-dirs:  
+                  test,
+                  src
